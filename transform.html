@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+
+  
+  d3.json("data/cocities5k.json", function(data) {
+      
+  var hhi1_mean, hhi2_mean, hhi3_mean, hhi4_mean, fam1_mean, fam2_mean, fam3_mean, fam4_mean, val1_mean, val2_mean, val3_mean, val4_mean, val5_mean, rent1_mean, rent2_mean, rent3_mean, rent4_mean, built1_mean, built2_mean, built3_mean, built4_mean, labor1_mean, labor2_mean, labor3_mean, labor4_mean, native1_mean, native2_mean, native3_mean, race1_mean, race2_mean, race3_mean, race4_mean, race5_mean, race6_mean, age1_mean, age2_mean, age3_mean, age4_mean, age5_mean, age6_mean, enr_mean, drive_mean, nomove_mean, own_mean, edu1_mean, edu2_mean, edu3_mean, edu4_mean, edu5_mean, pop_mean;
+  
+  var hhi1_sd, hhi2_sd, hhi3_sd, hhi4_sd, fam1_sd, fam2_sd, fam3_sd, fam4_sd, val1_sd, val2_sd, val3_sd, val4_sd, val5_sd, rent1_sd, rent2_sd, rent3_sd, rent4_sd, built1_sd, built2_sd, built3_sd, built4_sd, labor1_sd, labor2_sd, labor3_sd, labor4_sd, native1_sd, native2_sd, native3_sd, race1_sd, race2_sd, race3_sd, race4_sd, race5_sd, race6_sd, age1_sd, age2_sd, age3_sd, age4_sd, age5_sd, age6_sd, enr_sd, drive_sd, nomove_sd, own_sd, edu1_sd, edu2_sd, edu3_sd, edu4_sd, edu5_sd, pop_sd;
+
+    
+    hhi1_mean = d3.mean(data, function(d) { return d.hhi1; });
+    hhi2_mean = d3.mean(data, function(d) { return d.hhi2; });
+    hhi3_mean = d3.mean(data, function(d) { return d.hhi3; });
+    hhi4_mean = d3.mean(data, function(d) { return d.hhi4; });
+    fam1_mean = d3.mean(data, function(d) { return d.fam1; });
+    fam2_mean = d3.mean(data, function(d) { return d.fam2; });
+    fam3_mean = d3.mean(data, function(d) { return d.fam3; });
+    fam4_mean = d3.mean(data, function(d) { return d.fam4; });
+    val1_mean = d3.mean(data, function(d) { return d.val1; });
+    val2_mean = d3.mean(data, function(d) { return d.val2; });
+    val3_mean = d3.mean(data, function(d) { return d.val3; });
+    val4_mean = d3.mean(data, function(d) { return d.val4; });
+    val5_mean = d3.mean(data, function(d) { return d.val5; });
+    rent1_mean = d3.mean(data, function(d) { return d.rent1; });
+    rent2_mean = d3.mean(data, function(d) { return d.rent2; });
+    rent3_mean = d3.mean(data, function(d) { return d.rent3; });
+    rent4_mean = d3.mean(data, function(d) { return d.rent4; });
+    built1_mean = d3.mean(data, function(d) { return d.built1; });
+    built2_mean = d3.mean(data, function(d) { return d.built2; });
+    built3_mean = d3.mean(data, function(d) { return d.built3; });
+    built4_mean = d3.mean(data, function(d) { return d.built4; });
+    labor1_mean = d3.mean(data, function(d) { return d.labor1; });
+    labor2_mean = d3.mean(data, function(d) { return d.labor2; });
+    labor3_mean = d3.mean(data, function(d) { return d.labor3; });
+    labor4_mean = d3.mean(data, function(d) { return d.labor4; });
+    native1_mean = d3.mean(data, function(d) { return d.native1; });
+    native2_mean = d3.mean(data, function(d) { return d.native2; });
+    native3_mean = d3.mean(data, function(d) { return d.native3; });
+    race1_mean = d3.mean(data, function(d) { return d.race1; });
+    race2_mean = d3.mean(data, function(d) { return d.race2; });
+    race3_mean = d3.mean(data, function(d) { return d.race3; });
+    race4_mean = d3.mean(data, function(d) { return d.race4; });
+    race5_mean = d3.mean(data, function(d) { return d.race5; });
+    race6_mean = d3.mean(data, function(d) { return d.race6; });
+    age1_mean = d3.mean(data, function(d) { return d.age1; });
+    age2_mean = d3.mean(data, function(d) { return d.age2; });
+    age3_mean = d3.mean(data, function(d) { return d.age3; });
+    age4_mean = d3.mean(data, function(d) { return d.age4; });
+    age5_mean = d3.mean(data, function(d) { return d.age5; });
+    age6_mean = d3.mean(data, function(d) { return d.age6; });
+    enr_mean = d3.mean(data, function(d) { return d.enr; });
+    drive_mean = d3.mean(data, function(d) { return d.drive; });
+    nomove_mean = d3.mean(data, function(d) { return d.nomove; });
+    own_mean = d3.mean(data, function(d) { return d.own; });
+    edu1_mean = d3.mean(data, function(d) { return d.edu1; });
+    edu2_mean = d3.mean(data, function(d) { return d.edu2; });
+    edu3_mean = d3.mean(data, function(d) { return d.edu3; });
+    edu4_mean = d3.mean(data, function(d) { return d.edu4; });
+    edu5_mean = d3.mean(data, function(d) { return d.edu5; });
+    pop_mean = d3.mean(data, function(d) { return d.pop; });    
+    
+    hhi1_sd = d3.deviation(data, function(d) { return d.hhi1; });
+    hhi2_sd = d3.deviation(data, function(d) { return d.hhi2; });
+    hhi3_sd = d3.deviation(data, function(d) { return d.hhi3; });
+    hhi4_sd = d3.deviation(data, function(d) { return d.hhi4; });
+    fam1_sd = d3.deviation(data, function(d) { return d.fam1; });
+    fam2_sd = d3.deviation(data, function(d) { return d.fam2; });
+    fam3_sd = d3.deviation(data, function(d) { return d.fam3; });
+    fam4_sd = d3.deviation(data, function(d) { return d.fam4; });
+    val1_sd = d3.deviation(data, function(d) { return d.val1; });
+    val2_sd = d3.deviation(data, function(d) { return d.val2; });
+    val3_sd = d3.deviation(data, function(d) { return d.val3; });
+    val4_sd = d3.deviation(data, function(d) { return d.val4; });
+    val5_sd = d3.deviation(data, function(d) { return d.val5; });
+    rent1_sd = d3.deviation(data, function(d) { return d.rent1; });
+    rent2_sd = d3.deviation(data, function(d) { return d.rent2; });
+    rent3_sd = d3.deviation(data, function(d) { return d.rent3; });
+    rent4_sd = d3.deviation(data, function(d) { return d.rent4; });
+    built1_sd = d3.deviation(data, function(d) { return d.built1; });
+    built2_sd = d3.deviation(data, function(d) { return d.built2; });
+    built3_sd = d3.deviation(data, function(d) { return d.built3; });
+    built4_sd = d3.deviation(data, function(d) { return d.built4; });
+    labor1_sd = d3.deviation(data, function(d) { return d.labor1; });
+    labor2_sd = d3.deviation(data, function(d) { return d.labor2; });
+    labor3_sd = d3.deviation(data, function(d) { return d.labor3; });
+    labor4_sd = d3.deviation(data, function(d) { return d.labor4; });
+    native1_sd = d3.deviation(data, function(d) { return d.native1; });
+    native2_sd = d3.deviation(data, function(d) { return d.native2; });
+    native3_sd = d3.deviation(data, function(d) { return d.native3; });
+    race1_sd = d3.deviation(data, function(d) { return d.race1; });
+    race2_sd = d3.deviation(data, function(d) { return d.race2; });
+    race3_sd = d3.deviation(data, function(d) { return d.race3; });
+    race4_sd = d3.deviation(data, function(d) { return d.race4; });
+    race5_sd = d3.deviation(data, function(d) { return d.race5; });
+    race6_sd = d3.deviation(data, function(d) { return d.race6; });
+    age1_sd = d3.deviation(data, function(d) { return d.age1; });
+    age2_sd = d3.deviation(data, function(d) { return d.age2; });
+    age3_sd = d3.deviation(data, function(d) { return d.age3; });
+    age4_sd = d3.deviation(data, function(d) { return d.age4; });
+    age5_sd = d3.deviation(data, function(d) { return d.age5; });
+    age6_sd = d3.deviation(data, function(d) { return d.age6; });
+    enr_sd = d3.deviation(data, function(d) { return d.enr; });
+    drive_sd = d3.deviation(data, function(d) { return d.drive; });
+    nomove_sd = d3.deviation(data, function(d) { return d.nomove; });
+    own_sd = d3.deviation(data, function(d) { return d.own; });
+    edu1_sd = d3.deviation(data, function(d) { return d.edu1; });
+    edu2_sd = d3.deviation(data, function(d) { return d.edu2; });
+    edu3_sd = d3.deviation(data, function(d) { return d.edu3; });
+    edu4_sd = d3.deviation(data, function(d) { return d.edu4; });
+    edu5_sd = d3.deviation(data, function(d) { return d.edu5; });
+    pop_sd = d3.deviation(data, function(d) { return d.pop; });
+    
+    //transform to z-scores
+    var matrixData = data.map(function(d,i) {
+
+  return {
+    geoname: d.geoname,
+    geonum: d.geonum,
+    state: d.state,
+    pop: d.pop,
+    pop_z: (d.pop-pop_mean)/pop_sd,    
+    hhi1_z: (d.hhi1-hhi1_mean)/hhi1_sd,
+    hhi2_z: (d.hhi2-hhi2_mean)/hhi2_sd,
+    hhi3_z: (d.hhi3-hhi3_mean)/hhi3_sd,
+    hhi4_z: (d.hhi4-hhi4_mean)/hhi4_sd,
+    fam1_z: (d.fam1-fam1_mean)/fam1_sd,
+    fam2_z: (d.fam2-fam2_mean)/fam2_sd,
+    fam3_z: (d.fam3-fam3_mean)/fam3_sd,
+    fam4_z: (d.fam4-fam4_mean)/fam4_sd,
+    val1_z: (d.val1-val1_mean)/val1_sd,
+    val2_z: (d.val2-val2_mean)/val2_sd,
+    val3_z: (d.val3-val3_mean)/val3_sd,
+    val4_z: (d.val4-val4_mean)/val4_sd,
+    val5_z: (d.val5-val5_mean)/val5_sd,
+    rent1_z: (d.rent1-rent1_mean)/rent1_sd,
+    rent2_z: (d.rent2-rent2_mean)/rent2_sd,
+    rent3_z: (d.rent3-rent3_mean)/rent3_sd,
+    rent4_z: (d.rent4-rent4_mean)/rent4_sd,
+    built1_z: (d.built1-built1_mean)/built1_sd,
+    built2_z: (d.built2-built2_mean)/built2_sd,
+    built3_z: (d.built3-built3_mean)/built3_sd,
+    built4_z: (d.built4-built4_mean)/built4_sd,
+    labor1_z: (d.labor1-labor1_mean)/labor1_sd,
+    labor2_z: (d.labor2-labor2_mean)/labor2_sd,
+    labor3_z: (d.labor3-labor3_mean)/labor3_sd,
+    labor4_z: (d.labor4-labor4_mean)/labor4_sd,
+    native1_z: (d.native1-native1_mean)/native1_sd,
+    native2_z: (d.native2-native2_mean)/native2_sd,
+    native3_z: (d.native3-native3_mean)/native3_sd,
+    race1_z: (d.race1-race1_mean)/race1_sd,
+    race2_z: (d.race2-race2_mean)/race2_sd,
+    race3_z: (d.race3-race3_mean)/race3_sd,
+    race4_z: (d.race4-race4_mean)/race4_sd,
+    race5_z: (d.race5-race5_mean)/race5_sd,
+    race6_z: (d.race6-race6_mean)/race6_sd,
+    age1_z: (d.age1-age1_mean)/age1_sd,
+    age2_z: (d.age2-age2_mean)/age2_sd,
+    age3_z: (d.age3-age3_mean)/age3_sd,
+    age4_z: (d.age4-age4_mean)/age4_sd,
+    age5_z: (d.age5-age5_mean)/age5_sd,
+    age6_z: (d.age6-age6_mean)/age6_sd,
+    enr_z: (d.enr-enr_mean)/enr_sd,
+    drive_z: (d.drive-drive_mean)/drive_sd,
+    nomove_z: (d.nomove-nomove_mean)/nomove_sd,
+    own_z: (d.own-own_mean)/own_sd,
+    edu1_z: (d.edu1-edu1_mean)/edu1_sd,
+    edu2_z: (d.edu2-edu2_mean)/edu2_sd,
+    edu3_z: (d.edu3-edu3_mean)/edu3_sd,
+    edu4_z: (d.edu4-edu4_mean)/edu4_sd,
+    edu5_z: (d.edu5-edu5_mean)/edu5_sd
+  };
+});
+
+    //console.log(matrixData[0]);
+     //transform to z-scores
+    var nodes = data.map(function(d,i) {
+
+  return {
+    geoname: d.geoname,
+    geonum: d.geonum,
+    state: d.state,
+    pop: d.pop,
+    reg: d.reg  //comment this out for some versions
+  };
+});
+
+    
+    //write nodes
+   document.write('{"nodes":');
+   document.write(JSON.stringify(nodes));
+   document.write(',"links":[');
+    
+    
+    
+    //write links
+    
+var i,j,k,writecomma;
+    
+//console.log(matrixData.length);
+
+for(i=0;i<matrixData.length;i=i+1){
+  
+  //loop j with no repeats
+for(j=i;j<matrixData.length;j=j+1){  
+
+if(i===matrixData.length-2 && j===(matrixData.length-1)){writecomma="";}else{writecomma=",";}
+  
+if(i!==j){document.write('{"source":' + i + ', "target":' + j + 
+                         ', "pop":'+(Math.abs(matrixData[i].pop_z-matrixData[j].pop_z)).toFixed(2)+                       
+                         ', "hhi":'+(((Math.abs(matrixData[i].hhi1_z-matrixData[j].hhi1_z))+(Math.abs(matrixData[i].hhi2_z-matrixData[j].hhi2_z))+(Math.abs(matrixData[i].hhi3_z-matrixData[j].hhi3_z))+(Math.abs(matrixData[i].hhi4_z-matrixData[j].hhi4_z)))/4).toFixed(2)+
+                         ', "fam":'+(((Math.abs(matrixData[i].fam1_z-matrixData[j].fam1_z))+(Math.abs(matrixData[i].fam2_z-matrixData[j].fam2_z))+(Math.abs(matrixData[i].fam3_z-matrixData[j].fam3_z))+(Math.abs(matrixData[i].fam4_z-matrixData[j].fam4_z)))/4).toFixed(2)+
+                         ', "val":'+(((Math.abs(matrixData[i].val1_z-matrixData[j].val1_z))+(Math.abs(matrixData[i].val2_z-matrixData[j].val2_z))+(Math.abs(matrixData[i].val3_z-matrixData[j].val3_z))+(Math.abs(matrixData[i].val4_z-matrixData[j].val4_z))+(Math.abs(matrixData[i].val5_z-matrixData[j].val5_z)))/5).toFixed(2)+
+                         ', "rent":'+(((Math.abs(matrixData[i].rent1_z-matrixData[j].rent1_z))+(Math.abs(matrixData[i].rent2_z-matrixData[j].rent2_z))+(Math.abs(matrixData[i].rent3_z-matrixData[j].rent3_z))+(Math.abs(matrixData[i].rent4_z-matrixData[j].rent4_z)))/4).toFixed(2)+
+                         ', "built":'+(((Math.abs(matrixData[i].built1_z-matrixData[j].built1_z))+(Math.abs(matrixData[i].built2_z-matrixData[j].built2_z))+(Math.abs(matrixData[i].built3_z-matrixData[j].built3_z))+(Math.abs(matrixData[i].built4_z-matrixData[j].built4_z)))/4).toFixed(2)+
+                         ', "labor":'+(((Math.abs(matrixData[i].labor1_z-matrixData[j].labor1_z))+(Math.abs(matrixData[i].labor2_z-matrixData[j].labor2_z))+(Math.abs(matrixData[i].labor3_z-matrixData[j].labor3_z))+(Math.abs(matrixData[i].labor4_z-matrixData[j].labor4_z)))/4).toFixed(2)+
+                         ', "native":'+(((Math.abs(matrixData[i].native1_z-matrixData[j].native1_z))+(Math.abs(matrixData[i].native2_z-matrixData[j].native2_z))+(Math.abs(matrixData[i].native3_z-matrixData[j].native3_z)))/3).toFixed(2)+
+                         ', "race":'+(((Math.abs(matrixData[i].race1_z-matrixData[j].race1_z))+(Math.abs(matrixData[i].race2_z-matrixData[j].race2_z))+(Math.abs(matrixData[i].race3_z-matrixData[j].race3_z))+(Math.abs(matrixData[i].race4_z-matrixData[j].race4_z))+(Math.abs(matrixData[i].race5_z-matrixData[j].race5_z))+(Math.abs(matrixData[i].race6_z-matrixData[j].race6_z)))/6).toFixed(2)+
+                         ', "age":'+(((Math.abs(matrixData[i].age1_z-matrixData[j].age1_z))+(Math.abs(matrixData[i].age2_z-matrixData[j].age2_z))+(Math.abs(matrixData[i].age3_z-matrixData[j].age3_z))+(Math.abs(matrixData[i].age4_z-matrixData[j].age4_z))+(Math.abs(matrixData[i].age5_z-matrixData[j].age5_z))+(Math.abs(matrixData[i].age6_z-matrixData[j].age6_z)))/6).toFixed(2)+
+                         ', "edu":'+(((Math.abs(matrixData[i].edu1_z-matrixData[j].edu1_z))+(Math.abs(matrixData[i].edu2_z-matrixData[j].edu2_z))+(Math.abs(matrixData[i].edu3_z-matrixData[j].edu3_z))+(Math.abs(matrixData[i].edu4_z-matrixData[j].edu4_z))+(Math.abs(matrixData[i].edu5_z-matrixData[j].edu5_z)))/5).toFixed(2)+
+                         ', "enr":'+(Math.abs(matrixData[i].enr_z-matrixData[j].enr_z)).toFixed(2)+
+                         ', "drive":'+(Math.abs(matrixData[i].drive_z-matrixData[j].drive_z)).toFixed(2)+
+                         ', "nomove":'+(Math.abs(matrixData[i].nomove_z-matrixData[j].nomove_z)).toFixed(2)+
+                         ', "own":'+(Math.abs(matrixData[i].own_z-matrixData[j].own_z)).toFixed(2)+
+                         '}'+writecomma);}
+}
+}   
+    
+   document.write(']}');
+    
+});
+  
+  
+</script>
