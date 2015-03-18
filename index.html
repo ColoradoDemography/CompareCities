@@ -21,6 +21,31 @@
     vertical-align: bottom;
 }
   
+  #similar{
+
+    background-color: white;
+    overflow: hidden;
+    position: absolute;
+    color: #1ABC9C;
+    font-style: italic;
+    font-size: 14px;
+    font-family: "Courier";
+    border: 1px solid grey;
+    height: 20px;
+    width: 350px;
+    transition:             height 500ms ease;
+        -moz-transition:    height 500ms ease;
+        -ms-transition:     height 500ms ease;
+        -o-transition:      height 500ms ease;
+        -webkit-transition: height 500ms ease;
+}
+
+  
+  #table1{
+    margin: 15px;
+    text-align:center;  
+  }
+  
 input[type="range"]{
     background: rgb(94, 30, 30);
     width: 130px;
@@ -87,65 +112,215 @@ input[type="range"]::-webkit-slider-thumb:hover{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2e38', endColorstr='#2b4254',GradientType=1 );
  }
   
-  #rangesliders{
+  #controlbox{
+    display: block;
     top: 5px;
     left: 10px;
+    width: 250px;
+    height: 90px;
+    border-style: none;
+    border-right: 1px solid grey;
+  }  
+  
+  #rangesliders{
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 280px;
+    width: 280px;
   }
   #rangesliders2{
     position: absolute;
+    display: block;    
+    position: absolute;
     top: 5px;
-    left: 290px;
+    left: 560px;
+    width: 300px;
   }
     #rangesliders3{
+    position: absolute;  
+    display: block;      
     position: absolute;
     top: 5px;
-    left: 590px;
-  }
-    #rangesliders4{
-    position: absolute;
-    top: 5px;
-    left: 910px;
+    left: 865px;
+    width: 320px;
   }
 
+
+  #default{
+   height: 20px; 
+  }
+
+    #clear{
+   height: 20px; 
+      margin-top: 5px;
+  }
+ 
+      #cityselect{
+      margin-top: 5px;
+  }
   
-
+  #toptag{
+    cursor: default;
+    margin-top: 3px;
+  }
+  
 </style>
 <body>
+  <div id="controlbox"><form>
+  <input type="button" id="default" value="Default" onclick="changeval(this);" />
+  <input type="button" id="clear" value="Clear" onclick="changeval(this);" />
+    <select id="cityselect" onchange="highlightoption(this.value);">
+      <!--<option selected disabled>Find a City..</option>-->
+    </select>
+    </form></div>
+  
   <div id="rangesliders"><form>
-  <span>Population&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="pop" value = 5 min="0" max="10" onchange="changeval(this)"><br />   
-  <span>Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="age" value = 3 min="0" max="10" onchange="changeval(this)"><br />  
-  <span>Race/Ethnicity&nbsp;</span><input type="range" id="race" value = 3 min="0" max="10" onchange="changeval(this)"><br />
-  <span>Families&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="fam" value = 2 min="0" max="10" onchange="changeval(this)"><br />    
+  <span>Population&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="pop" value = 5 min="0" max="10" onchange="show_value(this.value,'slider_value1'); changeval(this)"><span id="slider_value1" style="color:red;"></span><br />   
+  <span>Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="age" value = 3 min="0" max="10" onchange="show_value(this.value,'slider_value2'); changeval(this)"><span id="slider_value2" style="color:red;"></span><br />  
+  <span>Race/Ethnicity&nbsp;</span><input type="range" id="race" value = 3 min="0" max="10" onchange="show_value(this.value,'slider_value3'); changeval(this)"><span id="slider_value3" style="color:red;"></span><br />
+  <span>Families&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="fam" value = 2 min="0" max="10" onchange="show_value(this.value,'slider_value4'); changeval(this)"><span id="slider_value4" style="color:red;"></span><br /> 
+  <span>Labor Force&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="labor" value = 2 min="0" max="10" onchange="show_value(this.value,'slider_value5'); changeval(this)"><span id="slider_value5" style="color:red;"></span><br />      
     </form></div>
 
    <div id="rangesliders2"><form> 
-  <span>Labor Force&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="labor" value = 2 min="0" max="10" onchange="changeval(this)"><br />  
-  <span>Home Ownership&nbsp;&nbsp;&nbsp;</span><input type="range" id="own" value = 2 min="0" max="10" onchange="changeval(this)"><br />  
-  <span>Household Income&nbsp;</span><input type="range" id="hhi" value = 3 min="0" max="10" onchange="changeval(this)"><br />
-  <span>Home Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="val" value = 3 min="0" max="10" onchange="changeval(this)"><br />     
+  <span>Home Ownership&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="own" value = 2 min="0" max="10" onchange="show_value(this.value,'slider_value6'); changeval(this)"><span id="slider_value6" style="color:red;"></span><br />  
+  <span>Household Income&nbsp;&nbsp;</span><input type="range" id="hhi" value = 3 min="0" max="10" onchange="show_value(this.value,'slider_value7'); changeval(this)"><span id="slider_value7" style="color:red;"></span><br />
+  <span>Home Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="val" value = 3 min="0" max="10" onchange="show_value(this.value,'slider_value8'); changeval(this)"><span id="slider_value8" style="color:red;"></span><br /> 
+  <span>Cost of Rent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="rent" value = 1 min="0" max="10" onchange="show_value(this.value,'slider_value9'); changeval(this)"><span id="slider_value9" style="color:red;"></span><br />  
+  <span>Housing Stock Age&nbsp;</span><input type="range" id="built" value = 1 min="0" max="10" onchange="show_value(this.value,'slider_value10'); changeval(this)"><span id="slider_value10" style="color:red;"></span><br />     
     </form></div>  
   
    <div id="rangesliders3"><form>   
-  <span>Cost of Rent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="rent" value = 1 min="0" max="10" onchange="changeval(this)"><br />  
-  <span>Housing Stock Age&nbsp;&nbsp;&nbsp;</span><input type="range" id="built" value = 1 min="0" max="10" onchange="changeval(this)"><br />
-  <span>Education Level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="edu" value = 3 min="0" max="10" onchange="changeval(this)"><br />
-  <span>Enrolled in College&nbsp;</span><input type="range" id="enr" value = 2 min="0" max="10" onchange="changeval(this)"><br />     
-     
+  <span>Education Level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="edu" value = 3 min="0" max="10" onchange="show_value(this.value,'slider_value11'); changeval(this)"><span id="slider_value11" style="color:red;"></span><br />
+  <span>Enrolled in College&nbsp;</span><input type="range" id="enr" value = 2 min="0" max="10" onchange="show_value(this.value,'slider_value12'); changeval(this)"><span id="slider_value12" style="color:red;"></span><br />     
+  <span>Drive to Work&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="drive" value = 1 min="0" max="10" onchange="show_value(this.value,'slider_value13'); changeval(this)"><span id="slider_value13" style="color:red;"></span><br />
+  <span>Mobility&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="nomove" value = 1 min="0" max="10" onchange="show_value(this.value,'slider_value14'); changeval(this)"><span id="slider_value14" style="color:red;"></span><br />
+  <span>Nativity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="native" value = 1 min="0" max="10" onchange="show_value(this.value,'slider_value15'); changeval(this)"><span id="slider_value15" style="color:red;"></span><br />     
     </form></div>  
-     <div id="rangesliders4"><form>     
-  <span>Drive to Work&nbsp;</span><input type="range" id="drive" value = 1 min="0" max="10" onchange="changeval(this)"><br />
-  <span>Mobility&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="nomove" value = 1 min="0" max="10" onchange="changeval(this)"><br />
-  <span>Nativity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="native" value = 1 min="0" max="10" onchange="changeval(this)"><br />
-    </form></div>
+ <hr /> 
   
-<hr />
   
+  <div id="similar">
+    <div>
+      <p id="toptag"><b>&nbsp;&nbsp;Comparables&nbsp;&nbsp;(Click to Toggle)</b></p>
+      <table id="table1">
+        <th><tr><td>Place</td><td>Distance</td></tr></th>
+        <tr><td id="comp1"></td><td id="dist1"></td></tr>
+        <tr><td id="comp2"></td><td id="dist2"></td></tr>
+        <tr><td id="comp3"></td><td id="dist3"></td></tr>
+        <tr><td id="comp4"></td><td id="dist4"></td></tr>
+        <tr><td id="comp5"></td><td id="dist5"></td></tr>
+      </table>  
+    </div>
+  </div>
+
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-  var pop=5, race=3, fam=2, built=1, labor=2, native=1, age=3, edu=3, enr=2, drive=1, nomove=1, own=2, hhi=3, val=3, rent=1;
+  document.getElementById( 'similar' ).addEventListener( 'click', function() {
+ 
+    ( this.style.height == '20px' || this.style.height == '' )
+        ? this.style.height = 'auto' 
+        : this.style.height = '20px';
+    
+}, false );
+  
+  var linksdata;
+  var pop=5, race=3, fam=2, built=1, labor=2, native=1, age=3, edu=3, enr=2, drive=1, nomove=1, own=2, hhi=3, val=3, rent=1; 
+  
+  function show_value(x,id){
+ document.getElementById(id).innerHTML=x;
+}
+    
+  function calcsimilarity(links){
+    var linkdistance;
+    var currentlyselected=document.getElementById("cityselect").value;
+    var resultsarray=[]; //array of objects
+    var currentobject={}; //will be pushed into resultsarray
+    
+    links.forEach(function(d, i) {
+      currentobject={};
+      if(links[i].source.geoname === currentlyselected){ currentobject.geoname=links[i].target.geoname;}
+      if(links[i].target.geoname === currentlyselected){ currentobject.geoname=links[i].source.geoname;}
+      if(links[i].source.geoname === currentlyselected || links[i].target.geoname === currentlyselected){
+        linkdistance=(pop*d.pop)+(race*d.race)+(fam*d.fam)+(built*d.built)+(labor*d.labor)+(native*d.native)+(age*d.age)+(edu*d.edu)+(enr*d.enr)+(drive*d.drive)+(nomove*d.nomove)+(own*d.own)+(hhi*d.hhi)+(val*d.val)+(rent*d.rent);
+        currentobject.linkdistance=linkdistance;
+        currentobject.pop=d.pop;
+        currentobject.race=d.race;
+        currentobject.fam=d.fam;
+        currentobject.built=d.built;
+        currentobject.labor=d.labor;
+        currentobject.native=d.native;
+        currentobject.age=d.age;
+        currentobject.edu=d.edu;
+        currentobject.enr=d.enr;
+        currentobject.drive=d.drive;
+        currentobject.nomove=d.nomove;
+        currentobject.own=d.own;
+        currentobject.hhi=d.hhi;
+        currentobject.val=d.val;
+        currentobject.rent=d.rent;
+        resultsarray.push(currentobject);
+      }
+    });
+    
+    resultsarray.sort(function(a, b){
+      if(a.linkdistance < b.linkdistance) return -1;
+      if(a.linkdistance > b.linkdistance) return 1;
+      return 0;
+    });
+        
+    document.getElementById('comp1').innerHTML = resultsarray[0].geoname+'&nbsp;&nbsp;';
+    document.getElementById('comp2').innerHTML = resultsarray[1].geoname+'&nbsp;&nbsp;'; 
+    document.getElementById('comp3').innerHTML = resultsarray[2].geoname+'&nbsp;&nbsp;';  
+    document.getElementById('comp4').innerHTML = resultsarray[3].geoname+'&nbsp;&nbsp;';
+    document.getElementById('comp5').innerHTML = resultsarray[4].geoname+'&nbsp;&nbsp;';
+        
+    document.getElementById('dist1').innerHTML = (resultsarray[0].linkdistance).toFixed(2);
+    document.getElementById('dist2').innerHTML = (resultsarray[1].linkdistance).toFixed(2); 
+    document.getElementById('dist3').innerHTML = (resultsarray[2].linkdistance).toFixed(2);  
+    document.getElementById('dist4').innerHTML = (resultsarray[3].linkdistance).toFixed(2);
+    document.getElementById('dist5').innerHTML = (resultsarray[4].linkdistance).toFixed(2);
+    
+ 
+  }
+  
+  function highlightoption(highlighted){
+
+    var i;
+    var circles = svg.selectAll("circle");
+    var targetcircle;
+    
+    d3.selectAll("circle").each( function(d, i){
+      if(d.geoname == highlighted){
+        
+        var cur
+       
+        d3.select(this).attr("stroke-width", 3)
+        .attr("r", function(d){return (Math.pow((Number(d.pop)/1000),1/2))+2;})
+        .attr("stroke", "yellow");
+        }else{
+        d3.select(this).attr("stroke-width", null)
+        .attr("r", function(d){return Math.pow((Number(d.pop)/1000),1/2);})
+        .attr("stroke", null);
+        }
+      
+    });
+    
+    force.linkStrength(function(link) {
+     // console.log(link);
+        if (link.source.geoname === highlighted || link.target.geoname === highlighted){ return 1; }else{ return 0.05};
+    }).start();
+    
+    calcsimilarity(linksdata);
+  }
+  
+
   
   function changeval(slider){
-
+    
+    //slider change
     if(slider.id==='pop'){pop=Number(slider.value);}
     if(slider.id==='race'){race=Number(slider.value);}
     if(slider.id==='fam'){fam=Number(slider.value);}
@@ -162,27 +337,62 @@ input[type="range"]::-webkit-slider-thumb:hover{
     if(slider.id==='val'){val=Number(slider.value);}
     if(slider.id==='rent'){rent=Number(slider.value);}
 
+    
+    //default button
+    if(slider.id==='default'){
+      show_value(5,'slider_value1'); show_value(3,'slider_value2'); show_value(3,'slider_value3'); show_value(2,'slider_value4'); show_value(2,'slider_value5');
+      show_value(2,'slider_value6'); show_value(3,'slider_value7'); show_value(3,'slider_value8'); show_value(1,'slider_value9'); show_value(1,'slider_value10');
+      show_value(3,'slider_value11'); show_value(2,'slider_value12'); show_value(1,'slider_value13'); show_value(1,'slider_value14'); show_value(1,'slider_value15');      
+      pop=5; race=3; fam=2; built=1; labor=2; native=1; age=3; edu=3; enr=2; drive=1; nomove=1; own=2; hhi=3; val=3; rent=1;
+      document.getElementById("pop").value = 5; document.getElementById("age").value = 3; document.getElementById("race").value = 3;
+      document.getElementById("fam").value = 2; document.getElementById("labor").value = 2; document.getElementById("own").value = 2;
+      document.getElementById("hhi").value = 3; document.getElementById("val").value = 3; document.getElementById("rent").value = 1;
+      document.getElementById("built").value = 1; document.getElementById("edu").value = 3; document.getElementById("enr").value = 2;
+      document.getElementById("drive").value = 1; document.getElementById("nomove").value = 1; document.getElementById("native").value = 1;
+    }
+    
+    //clear button
+    if(slider.id==='clear'){
+      show_value(0,'slider_value1'); show_value(0,'slider_value2'); show_value(0,'slider_value3'); show_value(0,'slider_value4'); show_value(0,'slider_value5');
+      show_value(0,'slider_value6'); show_value(0,'slider_value7'); show_value(0,'slider_value8'); show_value(0,'slider_value9'); show_value(0,'slider_value10');
+      show_value(0,'slider_value11'); show_value(0,'slider_value12'); show_value(0,'slider_value13'); show_value(0,'slider_value14'); show_value(0,'slider_value15');        
+      pop=0; race=0; fam=0; built=0; labor=0; native=0; age=0; edu=0; enr=0; drive=0; nomove=0; own=0; hhi=0; val=0; rent=0;
+      document.getElementById("pop").value = 0; document.getElementById("age").value = 0; document.getElementById("race").value = 0;
+      document.getElementById("fam").value = 0; document.getElementById("labor").value = 0; document.getElementById("own").value = 0;
+      document.getElementById("hhi").value = 0; document.getElementById("val").value = 0; document.getElementById("rent").value = 0;
+      document.getElementById("built").value = 0; document.getElementById("edu").value = 0; document.getElementById("enr").value = 0;
+      document.getElementById("drive").value = 0; document.getElementById("nomove").value = 0; document.getElementById("native").value = 0;
+    }
+    
     var total;
-    total = pop+race+fam+built+labor+native+age+edu+enr+drive+nomove+own+hhi+val+rent;
+    total = 1+pop+race+fam+built+labor+native+age+edu+enr+drive+nomove+own+hhi+val+rent;
     var multiplier;
     multiplier=231/total;
+
+    //redraw force layout with new weights
       force
-	    .linkDistance(function(d) { return  ((d.pop*pop)+(d.race*race)+(d.fam*fam)+(d.built*built)+(d.labor*labor)+(d.native*native)+(d.age*age)+(d.edu*edu)+(d.enr*enr)+(d.drive*drive)+(d.nomove*nomove)+(d.own*own)+(d.hhi*hhi)+(d.val*val)+(d.rent*rent))*multiplier; }) 
+	    .linkDistance(function(d) { return  1+((d.pop*pop)+(d.race*race)+(d.fam*fam)+(d.built*built)+(d.labor*labor)+(d.native*native)+(d.age*age)+(d.edu*edu)+(d.enr*enr)+(d.drive*drive)+(d.nomove*nomove)+(d.own*own)+(d.hhi*hhi)+(d.val*val)+(d.rent*rent))*multiplier; }) 
       .start();
+    
+        calcsimilarity(linksdata);
     
   }
   
-
+  //initial slider label values
+  show_value(5,'slider_value1'); show_value(3,'slider_value2'); show_value(3,'slider_value3'); show_value(2,'slider_value4'); show_value(2,'slider_value5');
+  show_value(2,'slider_value6'); show_value(3,'slider_value7'); show_value(3,'slider_value8'); show_value(1,'slider_value9'); show_value(1,'slider_value10');
+  show_value(3,'slider_value11'); show_value(2,'slider_value12'); show_value(1,'slider_value13'); show_value(1,'slider_value14'); show_value(1,'slider_value15');  
+  
 
 var width = 1200,
-    height = 700;
+    height = 650;
 
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(-0.000001)
+    .charge(-30)
 	  .gravity(0.1)
-	  .linkDistance(function(d) { return  ((d.pop*pop)+(d.race*race)+(d.fam*fam)+(d.built*built)+(d.labor*labor)+(d.native*native)+(d.age*age)+(d.edu*edu)+(d.enr*enr)+(d.drive*drive)+(d.nomove*nomove)+(d.own*own)+(d.hhi*hhi)+(d.val*val)+(d.rent*rent))*(231/(pop+race+fam+built+labor+native+age+edu+enr+drive+nomove+own+hhi+val+rent)); }) 
+	  .linkDistance(function(d) { return  1+((d.pop*pop)+(d.race*race)+(d.fam*fam)+(d.built*built)+(d.labor*labor)+(d.native*native)+(d.age*age)+(d.edu*edu)+(d.enr*enr)+(d.drive*drive)+(d.nomove*nomove)+(d.own*own)+(d.hhi*hhi)+(d.val*val)+(d.rent*rent))*(231/(1+pop+race+fam+built+labor+native+age+edu+enr+drive+nomove+own+hhi+val+rent)); }) 
 	  .linkStrength(1) 
     .friction(0.9)
     .size([width, height]);
@@ -194,6 +404,26 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 d3.json("data/recocities5k.json", function(error, graph) {
+  
+  linksdata=graph.links;  //make this available globally
+
+  
+  //fill in selectbox with placenames
+    (function loadselect(){
+      
+      var i;
+      var selectelem=document.getElementById("cityselect");
+      
+    for(i=0;i<graph.nodes.length;i=i+1){
+    var opt = document.createElement('option');
+    opt.value = graph.nodes[i].geoname;
+    opt.innerHTML = graph.nodes[i].geoname.replace(" city","").replace(" town","").replace(" CDP","").replace(", Colorado","");
+    selectelem.appendChild(opt);
+    }
+    
+    })(); //invoke
+   
+
   
   force.nodes(graph.nodes)
       .links(graph.links)
@@ -209,7 +439,6 @@ d3.json("data/recocities5k.json", function(error, graph) {
 node.append("circle")
       .attr("r", function(d){return Math.pow((Number(d.pop)/1000),1/2)})
       .style("fill", function(d) { 
-  //if(d.state==="8"){return "red";}else{return "blue";} 
 if(d.reg==="fr"){return "rgb(127,201,127)";}
 if(d.reg==="ws"){return "rgb(191,91,23)";}
 if(d.reg==="cm"){return "rgb(190,174,212)";}
@@ -250,7 +479,8 @@ node.append("text")
 
   });
   
-
+ 
+    document.getElementById( 'cityselect' ).onchange('Delta city, Colorado'); 
   
 });
 

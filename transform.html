@@ -13,6 +13,13 @@
   
   d3.json("data/cocities5k.json", function(data) {
       
+    
+    data.sort(function(a, b){
+    if(a.geoname < b.geoname) return -1;
+    if(a.geoname > b.geoname) return 1;
+    return 0;
+});
+    
   var hhi1_mean, hhi2_mean, hhi3_mean, hhi4_mean, fam1_mean, fam2_mean, fam3_mean, fam4_mean, val1_mean, val2_mean, val3_mean, val4_mean, val5_mean, rent1_mean, rent2_mean, rent3_mean, rent4_mean, built1_mean, built2_mean, built3_mean, built4_mean, labor1_mean, labor2_mean, labor3_mean, labor4_mean, native1_mean, native2_mean, native3_mean, race1_mean, race2_mean, race3_mean, race4_mean, race5_mean, race6_mean, age1_mean, age2_mean, age3_mean, age4_mean, age5_mean, age6_mean, enr_mean, drive_mean, nomove_mean, own_mean, edu1_mean, edu2_mean, edu3_mean, edu4_mean, edu5_mean, pop_mean;
   
   var hhi1_sd, hhi2_sd, hhi3_sd, hhi4_sd, fam1_sd, fam2_sd, fam3_sd, fam4_sd, val1_sd, val2_sd, val3_sd, val4_sd, val5_sd, rent1_sd, rent2_sd, rent3_sd, rent4_sd, built1_sd, built2_sd, built3_sd, built4_sd, labor1_sd, labor2_sd, labor3_sd, labor4_sd, native1_sd, native2_sd, native3_sd, race1_sd, race2_sd, race3_sd, race4_sd, race5_sd, race6_sd, age1_sd, age2_sd, age3_sd, age4_sd, age5_sd, age6_sd, enr_sd, drive_sd, nomove_sd, own_sd, edu1_sd, edu2_sd, edu3_sd, edu4_sd, edu5_sd, pop_sd;
@@ -123,6 +130,34 @@
     //transform to z-scores
     var matrixData = data.map(function(d,i) {
 
+      var chkval1, chkval2, chkval3, chkval4, chkval5;
+      if(d.own>0.1){
+        chkval1 = (d.val1-val1_mean)/val1_sd;
+        chkval2 = (d.val2-val2_mean)/val2_sd;
+        chkval3 = (d.val3-val3_mean)/val3_sd;
+        chkval4 = (d.val4-val4_mean)/val4_sd;
+        chkval5 = (d.val5-val5_mean)/val5_sd;
+        }else{ 
+          chkval1 = null;
+          chkval2 = null;
+          chkval3 = null;
+          chkval4 = null;
+          chkval5 = null;          
+        }
+
+      var chkrent1, chkrent2, chkrent3, chkrent4;
+      if(d.own<0.9){
+        chkrent1 = (d.rent1-rent1_mean)/rent1_sd;
+        chkrent2 = (d.rent2-rent2_mean)/rent2_sd;
+        chkrent3 = (d.rent3-rent3_mean)/rent3_sd;
+        chkrent4 = (d.rent4-rent4_mean)/rent4_sd;
+        }else{ 
+          chkrent1 = null;
+          chkrent2 = null;
+          chkrent3 = null;
+          chkrent4 = null;
+        }
+      
   return {
     geoname: d.geoname,
     geonum: d.geonum,
@@ -137,15 +172,15 @@
     fam2_z: (d.fam2-fam2_mean)/fam2_sd,
     fam3_z: (d.fam3-fam3_mean)/fam3_sd,
     fam4_z: (d.fam4-fam4_mean)/fam4_sd,
-    val1_z: (d.val1-val1_mean)/val1_sd,
-    val2_z: (d.val2-val2_mean)/val2_sd,
-    val3_z: (d.val3-val3_mean)/val3_sd,
-    val4_z: (d.val4-val4_mean)/val4_sd,
-    val5_z: (d.val5-val5_mean)/val5_sd,
-    rent1_z: (d.rent1-rent1_mean)/rent1_sd,
-    rent2_z: (d.rent2-rent2_mean)/rent2_sd,
-    rent3_z: (d.rent3-rent3_mean)/rent3_sd,
-    rent4_z: (d.rent4-rent4_mean)/rent4_sd,
+    val1_z: chkval1,
+    val2_z: chkval2,
+    val3_z: chkval3,
+    val4_z: chkval4,
+    val5_z: chkval5,
+    rent1_z: chkrent1,
+    rent2_z: chkrent2,
+    rent3_z: chkrent3,
+    rent4_z: chkrent4,
     built1_z: (d.built1-built1_mean)/built1_sd,
     built2_z: (d.built2-built2_mean)/built2_sd,
     built3_z: (d.built3-built3_mean)/built3_sd,
