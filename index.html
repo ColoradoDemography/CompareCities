@@ -12,6 +12,15 @@
   stroke-width: 1px;
 }
   
+  .dt{
+    color: black;
+    text-align:center;  
+    font-style: italic;
+    font-size: 14px;
+    font-family: "Courier";
+    vertical-align: bottom;
+  }
+  
   span {
     color: #1ABC9C;
     text-align:center;  
@@ -25,14 +34,13 @@
 
     background-color: white;
     overflow: hidden;
-    position: absolute;
     color: #1ABC9C;
     font-style: italic;
     font-size: 14px;
     font-family: "Courier";
     border: 1px solid grey;
     height: 20px;
-    width: 350px;
+    width: 95%;
     transition:             height 500ms ease;
         -moz-transition:    height 500ms ease;
         -ms-transition:     height 500ms ease;
@@ -165,13 +173,25 @@ input[type="range"]::-webkit-slider-thumb:hover{
     margin-top: 3px;
   }
   
+  
+  table{
+border-collapse:collapse;
+border:1px solid grey;
+}
+
+table td{
+border:1px solid grey;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+  
 </style>
 <body>
   <div id="controlbox"><form>
   <input type="button" id="default" value="Default" onclick="changeval(this);" />
   <input type="button" id="clear" value="Clear" onclick="changeval(this);" />
     <select id="cityselect" onchange="highlightoption(this.value);">
-      <!--<option selected disabled>Find a City..</option>-->
+      <option selected>Overview</option>
     </select>
     </form></div>
   
@@ -205,12 +225,12 @@ input[type="range"]::-webkit-slider-thumb:hover{
     <div>
       <p id="toptag"><b>&nbsp;&nbsp;Comparables&nbsp;&nbsp;(Click to Toggle)</b></p>
       <table id="table1">
-        <th><tr><td>Place</td><td>Distance</td></tr></th>
-        <tr><td id="comp1"></td><td id="dist1"></td></tr>
-        <tr><td id="comp2"></td><td id="dist2"></td></tr>
-        <tr><td id="comp3"></td><td id="dist3"></td></tr>
-        <tr><td id="comp4"></td><td id="dist4"></td></tr>
-        <tr><td id="comp5"></td><td id="dist5"></td></tr>
+        <tr><th>Place</th><th>Similarity Score</th><th colspan="3"><span class="dt">Most Alike (of selected) Characteristics:</span> Z-Score</th></tr>
+        <tr><td id="comp1"></td><td id="dist1"></td><td id="sim1a"></td><td id="sim2a"></td><td id="sim3a"></td></tr>
+        <tr><td id="comp2"></td><td id="dist2"></td><td id="sim1b"></td><td id="sim2b"></td><td id="sim3b"></td></tr>
+        <tr><td id="comp3"></td><td id="dist3"></td><td id="sim1c"></td><td id="sim2c"></td><td id="sim3c"></td></tr>
+        <tr><td id="comp4"></td><td id="dist4"></td><td id="sim1d"></td><td id="sim2d"></td><td id="sim3d"></td></tr>
+        <tr><td id="comp5"></td><td id="dist5"></td><td id="sim1e"></td><td id="sim2e"></td><td id="sim3e"></td></tr>
       </table>  
     </div>
   </div>
@@ -218,6 +238,8 @@ input[type="range"]::-webkit-slider-thumb:hover{
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
+  
+  //collapsible div for comparables
   document.getElementById( 'similar' ).addEventListener( 'click', function() {
  
     ( this.style.height == '20px' || this.style.height == '' )
@@ -226,7 +248,7 @@ input[type="range"]::-webkit-slider-thumb:hover{
     
 }, false );
   
-  var linksdata;
+  var linksdata; //global all links
   var pop=5, race=3, fam=2, built=1, labor=2, native=1, age=3, edu=3, enr=2, drive=1, nomove=1, own=2, hhi=3, val=3, rent=1; 
   
   function show_value(x,id){
@@ -270,7 +292,46 @@ input[type="range"]::-webkit-slider-thumb:hover{
       if(a.linkdistance > b.linkdistance) return 1;
       return 0;
     });
-        
+    
+    var top5attributes = resultsarray.map(function(d,i) {
+      
+  return {
+    "Total Population":d.pop,
+    "Race":d.race,
+    "Family":d.fam,
+    "Housing Stock":d.built,
+    "Labor Force":d.labor,
+    "Nativity":d.native,
+    "Age":d.age,
+    "Educational Attainment":d.edu,
+    "Enrolled in College":d.enr,
+    "Drive to Work":d.drive,
+    "Mobility":d.nomove,
+    "Home Ownership":d.own,
+    "Household Income":d.hhi,
+    "Home Value":d.val,
+    "Cost to Rent":d.rent
+  };
+});
+    
+    var master=[]; //final master array of sorted alike variables for top 5 comparables
+    var toarray=[], sortable=[], item, j;
+    
+    for(j=0;j<5;j=j+1){
+    toarray = top5attributes[j];
+    sortable = [];
+    
+    for (item in toarray){
+      sortable.push([item, toarray[item]]);      
+    }
+    
+     sortable.sort(function(a, b) {return a[1] - b[1]});
+    
+    master.push(sortable);
+    }
+
+    console.log(master);
+    
     document.getElementById('comp1').innerHTML = resultsarray[0].geoname+'&nbsp;&nbsp;';
     document.getElementById('comp2').innerHTML = resultsarray[1].geoname+'&nbsp;&nbsp;'; 
     document.getElementById('comp3').innerHTML = resultsarray[2].geoname+'&nbsp;&nbsp;';  
@@ -283,7 +344,23 @@ input[type="range"]::-webkit-slider-thumb:hover{
     document.getElementById('dist4').innerHTML = (resultsarray[3].linkdistance).toFixed(2);
     document.getElementById('dist5').innerHTML = (resultsarray[4].linkdistance).toFixed(2);
     
- 
+    document.getElementById('sim1a').innerHTML = '<span class="dt">'+master[0][0][0]+':</span>'+master[0][0][1];
+    document.getElementById('sim1b').innerHTML = '<span class="dt">'+master[1][0][0]+':</span>'+master[1][0][1];
+    document.getElementById('sim1c').innerHTML = '<span class="dt">'+master[2][0][0]+':</span>'+master[2][0][1];
+    document.getElementById('sim1d').innerHTML = '<span class="dt">'+master[3][0][0]+':</span>'+master[3][0][1];
+    document.getElementById('sim1e').innerHTML = '<span class="dt">'+master[4][0][0]+':</span>'+master[4][0][1];
+    
+    document.getElementById('sim2a').innerHTML = '<span class="dt">'+master[0][1][0]+':</span>'+master[0][1][1];
+    document.getElementById('sim2b').innerHTML = '<span class="dt">'+master[1][1][0]+':</span>'+master[1][1][1];
+    document.getElementById('sim2c').innerHTML = '<span class="dt">'+master[2][1][0]+':</span>'+master[2][1][1];
+    document.getElementById('sim2d').innerHTML = '<span class="dt">'+master[3][1][0]+':</span>'+master[3][1][1];
+    document.getElementById('sim2e').innerHTML = '<span class="dt">'+master[4][1][0]+':</span>'+master[4][1][1];
+    
+    document.getElementById('sim3a').innerHTML = '<span class="dt">'+master[0][2][0]+':</span>'+master[0][2][1];
+    document.getElementById('sim3b').innerHTML = '<span class="dt">'+master[1][2][0]+':</span>'+master[1][2][1];
+    document.getElementById('sim3c').innerHTML = '<span class="dt">'+master[2][2][0]+':</span>'+master[2][2][1];
+    document.getElementById('sim3d').innerHTML = '<span class="dt">'+master[3][2][0]+':</span>'+master[3][2][1];
+    document.getElementById('sim3e').innerHTML = '<span class="dt">'+master[4][2][0]+':</span>'+master[4][2][1];
   }
   
   function highlightoption(highlighted){
@@ -310,7 +387,7 @@ input[type="range"]::-webkit-slider-thumb:hover{
     
     force.linkStrength(function(link) {
      // console.log(link);
-        if (link.source.geoname === highlighted || link.target.geoname === highlighted){ return 1; }else{ return 0.05};
+        if (link.source.geoname === highlighted || link.target.geoname === highlighted){ return 2; }else{ return 0.1};
     }).start();
     
     calcsimilarity(linksdata);
@@ -385,14 +462,14 @@ input[type="range"]::-webkit-slider-thumb:hover{
   
 
 var width = 1200,
-    height = 650;
+    height = 600;
 
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
     .charge(-30)
 	  .gravity(0.1)
-	  .linkDistance(function(d) { return  1+((d.pop*pop)+(d.race*race)+(d.fam*fam)+(d.built*built)+(d.labor*labor)+(d.native*native)+(d.age*age)+(d.edu*edu)+(d.enr*enr)+(d.drive*drive)+(d.nomove*nomove)+(d.own*own)+(d.hhi*hhi)+(d.val*val)+(d.rent*rent))*(231/(1+pop+race+fam+built+labor+native+age+edu+enr+drive+nomove+own+hhi+val+rent)); }) 
+	  .linkDistance(function(d) { return  1+((d.pop*pop)+(d.race*race)+(d.fam*fam)+(d.built*built)+(d.labor*labor)+(d.native*native)+Math.sqrt(d.age*age)+(d.edu*edu)+(d.enr*enr)+(d.drive*drive)+(d.nomove*nomove)+(d.own*own)+(d.hhi*hhi)+(d.val*val)+(d.rent*rent))*(231/(1+pop+race+fam+built+labor+native+age+edu+enr+drive+nomove+own+hhi+val+rent)); }) 
 	  .linkStrength(1) 
     .friction(0.9)
     .size([width, height]);
@@ -480,7 +557,7 @@ node.append("text")
   });
   
  
-    document.getElementById( 'cityselect' ).onchange('Delta city, Colorado'); 
+    document.getElementById( 'cityselect' ).onchange(); 
   
 });
 
