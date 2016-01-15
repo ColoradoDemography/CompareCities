@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+</style>
+
+<body>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script>
+        d3.json("data/rawdata.json", function(data) {
+
+            //sort data alphabetically
+            data.sort(function(a, b) {
+                if (a.geoname < b.geoname) return -1;
+                if (a.geoname > b.geoname) return 1;
+                return 0;
+            });
+
+            var pop_mean, emp_mean, epr_mean, goods_mean, gsr_mean, service_mean;
+            var pop_sd, emp_sd, epr_sd, goods_sd, gsr_sd, service_sd;
+
+            //find mean values
+            pop_mean = d3.mean(data, function(d) { return d.pop; });
+            emp_mean = d3.mean(data, function(d) { return d.emp; });
+            epr_mean = d3.mean(data, function(d) { return d.epr; });
+            goods_mean = d3.mean(data, function(d) { return d.goods; });
+            gsr_mean = d3.mean(data, function(d) { return d.gsr; });
+            service_mean = d3.mean(data, function(d) { return d.service; });
+            
+            //find standard deviations
+            pop_sd = d3.deviation(data, function(d) { return d.pop; });
+            emp_sd = d3.deviation(data, function(d) { return d.emp; });
+            epr_sd = d3.deviation(data, function(d) { return d.epr; });
+            goods_sd = d3.deviation(data, function(d) { return d.goods; });
+            gsr_sd = d3.deviation(data, function(d) { return d.gsr; });
+            service_sd = d3.deviation(data, function(d) { return d.service; });
+
+          
+            //transform to z-scores
+            var matrixData = data.map(function(d, i) {
+
+
+                return {
+                    geoname: d.geoname,
+                    geonum: d.geonum,
+                    pop: d.pop,
+                    pop_z: (d.pop - pop_mean) / pop_sd,
+                    emp_z: (d.emp - emp_mean) / emp_sd,
+                    epr_z: (d.epr - epr_mean) / epr_sd,
+                    goods_z: (d.goods - goods_mean) / goods_sd,
+                    gsr_z: (d.gsr - gsr_mean) / gsr_sd,
+                    service_z: (d.service - service_mean) / service_sd                  
+                };
+            });
+
+            //console.log(matrixData[0]);
+            //transform to z-scores
+            var nodes = data.map(function(d, i) {
+
+                return {
+                    geoname: d.geoname,
+                    geonum: d.geonum,
+                    pop: d.pop
+                };
+            });
+
+
+            //write nodes
+            document.write('{"nodes":');
+            document.write(JSON.stringify(nodes));
+            document.write(',"links":[');
+
+
+
+            //write links
+
+            var i, j, k, writecomma;
+
+            //console.log(matrixData.length);
+
+            for (i = 0; i < matrixData.length; i = i + 1) {
+
+                //loop j with no repeats
+                for (j = i; j < matrixData.length; j = j + 1) {
+
+                    if (i === matrixData.length - 2 && j === (matrixData.length - 1)) {
+                        writecomma = "";
+                    } else {
+                        writecomma = ",";
+                    }
+
+                    if (i !== j) {
+                        document.write('{"source":' + i + ', "target":' + j +
+                            ', "pop":' + (Math.abs(matrixData[i].pop_z - matrixData[j].pop_z)).toFixed(2) +
+                            ', "emp":' + (Math.abs(matrixData[i].emp_z - matrixData[j].emp_z)).toFixed(2) +
+                            ', "epr":' + (Math.abs(matrixData[i].epr_z - matrixData[j].epr_z)).toFixed(2) +
+                            ', "goods":' + (Math.abs(matrixData[i].goods_z - matrixData[j].goods_z)).toFixed(2) +
+                            ', "gsr":' + (Math.abs(matrixData[i].gsr_z - matrixData[j].gsr_z)).toFixed(2) +
+                            ', "service":' + (Math.abs(matrixData[i].service_z - matrixData[j].service_z)).toFixed(2) +           
+                            '}' + writecomma);
+                    }
+                }
+            }
+
+            document.write(']}');
+
+        });
+    </script>

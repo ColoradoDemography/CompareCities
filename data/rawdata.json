@@ -1,0 +1,541 @@
+[{
+    "geoname": "Adams County",
+    "geonum": "1",
+    "pop": "265038",
+    "emp": "93536",
+    "epr": "0.352915430994801",
+    "goods": "18409",
+    "gsr": "0.306132969701001",
+    "service": "60134"
+}, {
+    "geoname": "Alamosa County",
+    "geonum": "3",
+    "pop": "13617",
+    "emp": "5279",
+    "epr": "0.387677168245575",
+    "goods": "755",
+    "gsr": "0.235642946317104",
+    "service": "3204"
+}, {
+    "geoname": "Arapahoe County",
+    "geonum": "5",
+    "pop": "391511",
+    "emp": "172188",
+    "epr": "0.439803734760965",
+    "goods": "20260",
+    "gsr": "0.153876534208288",
+    "service": "131664"
+}, {
+    "geoname": "Archuleta County",
+    "geonum": "7",
+    "pop": "5345",
+    "emp": "1556",
+    "epr": "0.2911131898971",
+    "goods": "110",
+    "gsr": "0.102803738317757",
+    "service": "1070"
+}, {
+    "geoname": "Baca County",
+    "geonum": "9",
+    "pop": "4556",
+    "emp": "1016",
+    "epr": "0.223002633889377",
+    "goods": "61",
+    "gsr": "0.142857142857143",
+    "service": "427"
+}, {
+    "geoname": "Bent County",
+    "geonum": "11",
+    "pop": "5048",
+    "emp": "1355",
+    "epr": "0.268423137876387",
+    "goods": "85",
+    "gsr": "0.351239669421488",
+    "service": "242"
+}, {
+    "geoname": "Boulder County",
+    "geonum": "13",
+    "pop": "225339",
+    "emp": "117964",
+    "epr": "0.523495710906678",
+    "goods": "28257",
+    "gsr": "0.423395615756904",
+    "service": "66739"
+}, {
+    "geoname": "Chaffee County",
+    "geonum": "15",
+    "pop": "12684",
+    "emp": "4184",
+    "epr": "0.329864396089562",
+    "goods": "395",
+    "gsr": "0.161951619516195",
+    "service": "2439"
+}, {
+    "geoname": "Cheyenne County",
+    "geonum": "17",
+    "pop": "2397",
+    "emp": "673",
+    "epr": "0.280767626199416",
+    "goods": "116",
+    "gsr": "0.432835820895522",
+    "service": "268"
+}, {
+    "geoname": "Clear Creek County",
+    "geonum": "19",
+    "pop": "7619",
+    "emp": "2365",
+    "epr": "0.310408190051188",
+    "goods": "629",
+    "gsr": "0.550788091068301",
+    "service": "1142"
+}, {
+    "geoname": "Conejos County",
+    "geonum": "21",
+    "pop": "7453",
+    "emp": "1269",
+    "epr": "0.170267006574534",
+    "goods": "272",
+    "gsr": "0.635514018691589",
+    "service": "428"
+}, {
+    "geoname": "Costilla County",
+    "geonum": "23",
+    "pop": "3190",
+    "emp": "718",
+    "epr": "0.225078369905956",
+    "goods": "202",
+    "gsr": "1.44285714285714",
+    "service": "140"
+}, {
+    "geoname": "Crowley County",
+    "geonum": "25",
+    "pop": "3946",
+    "emp": "784",
+    "epr": "0.198682209832742",
+    "goods": "79",
+    "gsr": "0.372641509433962",
+    "service": "212"
+}, {
+    "geoname": "Custer County",
+    "geonum": "27",
+    "pop": "1926",
+    "emp": "325",
+    "epr": "0.168743509865005",
+    "goods": "56",
+    "gsr": "0.383561643835616",
+    "service": "146"
+}, {
+    "geoname": "Delta County",
+    "geonum": "29",
+    "pop": "20980",
+    "emp": "4990",
+    "epr": "0.237845567206864",
+    "goods": "897",
+    "gsr": "0.34302103250478",
+    "service": "2615"
+}, {
+    "geoname": "Denver County",
+    "geonum": "31",
+    "pop": "467610",
+    "emp": "385754",
+    "epr": "0.824948140544471",
+    "goods": "46487",
+    "gsr": "0.166662484001305",
+    "service": "278929"
+}, {
+    "geoname": "Dolores County",
+    "geonum": "33",
+    "pop": "1504",
+    "emp": "396",
+    "epr": "0.263297872340426",
+    "goods": "58",
+    "gsr": "0.345238095238095",
+    "service": "168"
+}, {
+    "geoname": "Douglas County",
+    "geonum": "35",
+    "pop": "60391",
+    "emp": "13249",
+    "epr": "0.219386994750873",
+    "goods": "2514",
+    "gsr": "0.311717296962182",
+    "service": "8065"
+}, {
+    "geoname": "Eagle County",
+    "geonum": "37",
+    "pop": "21928",
+    "emp": "14664",
+    "epr": "0.668734038672018",
+    "goods": "2009",
+    "gsr": "0.178991446899501",
+    "service": "11224"
+}, {
+    "geoname": "Elbert County",
+    "geonum": "39",
+    "pop": "9646",
+    "emp": "1141",
+    "epr": "0.118287373004354",
+    "goods": "248",
+    "gsr": "0.690807799442897",
+    "service": "359"
+}, {
+    "geoname": "El Paso County",
+    "geonum": "41",
+    "pop": "397014",
+    "emp": "152793",
+    "epr": "0.384855445903671",
+    "goods": "27009",
+    "gsr": "0.280837657138698",
+    "service": "96173"
+}, {
+    "geoname": "Fremont County",
+    "geonum": "43",
+    "pop": "32273",
+    "emp": "8538",
+    "epr": "0.2645555107985",
+    "goods": "1283",
+    "gsr": "0.295622119815668",
+    "service": "4340"
+}, {
+    "geoname": "Garfield County",
+    "geonum": "45",
+    "pop": "29974",
+    "emp": "11964",
+    "epr": "0.399145926469607",
+    "goods": "2276",
+    "gsr": "0.309239130434783",
+    "service": "7360"
+}, {
+    "geoname": "Gilpin County",
+    "geonum": "47",
+    "pop": "3070",
+    "emp": "392",
+    "epr": "0.127687296416938",
+    "goods": "32",
+    "gsr": "0.146118721461187",
+    "service": "219"
+}, {
+    "geoname": "Grand County",
+    "geonum": "49",
+    "pop": "7966",
+    "emp": "4197",
+    "epr": "0.52686417273412",
+    "goods": "302",
+    "gsr": "0.0982433311646064",
+    "service": "3074"
+}, {
+    "geoname": "Gunnison County",
+    "geonum": "51",
+    "pop": "10273",
+    "emp": "4807",
+    "epr": "0.467925630293001",
+    "goods": "530",
+    "gsr": "0.163127116035703",
+    "service": "3249"
+}, {
+    "geoname": "Huerfano County",
+    "geonum": "55",
+    "pop": "6009",
+    "emp": "1263",
+    "epr": "0.210184722915627",
+    "goods": "147",
+    "gsr": "0.230046948356808",
+    "service": "639"
+}, {
+    "geoname": "Jackson County",
+    "geonum": "57",
+    "pop": "1605",
+    "emp": "460",
+    "epr": "0.286604361370716",
+    "goods": "155",
+    "gsr": "1.09154929577465",
+    "service": "142"
+}, {
+    "geoname": "Jefferson County",
+    "geonum": "59",
+    "pop": "438430",
+    "emp": "162704",
+    "epr": "0.3711059918345",
+    "goods": "31965",
+    "gsr": "0.310834727138356",
+    "service": "102836"
+}, {
+    "geoname": "Kit Carson County",
+    "geonum": "63",
+    "pop": "7140",
+    "emp": "2473",
+    "epr": "0.346358543417367",
+    "goods": "346",
+    "gsr": "0.24591329068941",
+    "service": "1407"
+}, {
+    "geoname": "La Plata County",
+    "geonum": "65",
+    "pop": "32284",
+    "emp": "13267",
+    "epr": "0.410946598934457",
+    "goods": "458",
+    "gsr": "0.557856272838002",
+    "service": "821"
+}, {
+    "geoname": "Lake County",
+    "geonum": "67",
+    "pop": "6007",
+    "emp": "1860",
+    "epr": "0.309638754786083",
+    "goods": "1504",
+    "gsr": "0.169828364950316",
+    "service": "8856"
+}, {
+    "geoname": "Larimer County",
+    "geonum": "69",
+    "pop": "186136",
+    "emp": "74647",
+    "epr": "0.401034727296171",
+    "goods": "18429",
+    "gsr": "0.468585522133794",
+    "service": "39329"
+}, {
+    "geoname": "Las Animas County",
+    "geonum": "71",
+    "pop": "13765",
+    "emp": "3413",
+    "epr": "0.247947693425354",
+    "goods": "300",
+    "gsr": "0.165471594043023",
+    "service": "1813"
+}, {
+    "geoname": "Lincoln County",
+    "geonum": "73",
+    "pop": "4529",
+    "emp": "1499",
+    "epr": "0.330978140869949",
+    "goods": "88",
+    "gsr": "0.0983240223463687",
+    "service": "895"
+}, {
+    "geoname": "Logan County",
+    "geonum": "75",
+    "pop": "17567",
+    "emp": "6580",
+    "epr": "0.374565947515227",
+    "goods": "1222",
+    "gsr": "0.304586241276172",
+    "service": "4012"
+}, {
+    "geoname": "Mesa County",
+    "geonum": "77",
+    "pop": "93145",
+    "emp": "34177",
+    "epr": "0.366922540125611",
+    "goods": "5927",
+    "gsr": "0.266083052749719",
+    "service": "22275"
+}, {
+    "geoname": "Mineral County",
+    "geonum": "79",
+    "pop": "558",
+    "emp": "268",
+    "epr": "0.480286738351254",
+    "goods": "18",
+    "gsr": "0.104046242774566",
+    "service": "173"
+}, {
+    "geoname": "Moffat County",
+    "geonum": "81",
+    "pop": "11357",
+    "emp": "4237",
+    "epr": "0.373073875143084",
+    "goods": "1124",
+    "gsr": "0.540124939932725",
+    "service": "2081"
+}, {
+    "geoname": "Montezuma County",
+    "geonum": "83",
+    "pop": "18672",
+    "emp": "6395",
+    "epr": "0.342491431019709",
+    "goods": "1190",
+    "gsr": "0.373861137291863",
+    "service": "3183"
+}, {
+    "geoname": "Montrose County",
+    "geonum": "85",
+    "pop": "24423",
+    "emp": "8347",
+    "epr": "0.341768005568521",
+    "goods": "1885",
+    "gsr": "0.42454954954955",
+    "service": "4440"
+}, {
+    "geoname": "Morgan County",
+    "geonum": "87",
+    "pop": "21939",
+    "emp": "7926",
+    "epr": "0.361274442773144",
+    "goods": "2316",
+    "gsr": "0.590967083439653",
+    "service": "3919"
+}, {
+    "geoname": "Otero County",
+    "geonum": "89",
+    "pop": "20185",
+    "emp": "6447",
+    "epr": "0.319395590785237",
+    "goods": "1146",
+    "gsr": "0.306417112299465",
+    "service": "3740"
+}, {
+    "geoname": "Ouray County",
+    "geonum": "91",
+    "pop": "2295",
+    "emp": "747",
+    "epr": "0.325490196078431",
+    "goods": "169",
+    "gsr": "0.424623115577889",
+    "service": "398"
+}, {
+    "geoname": "Park County",
+    "geonum": "93",
+    "pop": "7174",
+    "emp": "940",
+    "epr": "0.131028714803457",
+    "goods": "139",
+    "gsr": "0.434375",
+    "service": "320"
+}, {
+    "geoname": "Phillips County",
+    "geonum": "95",
+    "pop": "4189",
+    "emp": "1181",
+    "epr": "0.281928861303414",
+    "goods": "198",
+    "gsr": "0.37218045112782",
+    "service": "532"
+}, {
+    "geoname": "Pitkin County",
+    "geonum": "97",
+    "pop": "12661",
+    "emp": "12740",
+    "epr": "1.00623963352026",
+    "goods": "1872",
+    "gsr": "0.192731390919386",
+    "service": "9713"
+}, {
+    "geoname": "Prowers County",
+    "geonum": "99",
+    "pop": "13347",
+    "emp": "4732",
+    "epr": "0.354536599985015",
+    "goods": "1163",
+    "gsr": "0.506753812636166",
+    "service": "2295"
+}, {
+    "geoname": "Pueblo County",
+    "geonum": "101",
+    "pop": "123051",
+    "emp": "43143",
+    "epr": "0.350610722383402",
+    "goods": "7229",
+    "gsr": "0.277558072566711",
+    "service": "26045"
+}, {
+    "geoname": "Rio Blanco County",
+    "geonum": "103",
+    "pop": "6051",
+    "emp": "2423",
+    "epr": "0.400429681044455",
+    "goods": "823",
+    "gsr": "1.1351724137931",
+    "service": "725"
+}, {
+    "geoname": "Rio Grande County",
+    "geonum": "105",
+    "pop": "10770",
+    "emp": "3817",
+    "epr": "0.354410399257196",
+    "goods": "1020",
+    "gsr": "0.52987012987013",
+    "service": "1925"
+}, {
+    "geoname": "Routt County",
+    "geonum": "107",
+    "pop": "14088",
+    "emp": "8403",
+    "epr": "0.596465076660988",
+    "goods": "1271",
+    "gsr": "0.213004860063684",
+    "service": "5967"
+}, {
+    "geoname": "Saguache County",
+    "geonum": "109",
+    "pop": "4619",
+    "emp": "1116",
+    "epr": "0.241610738255034",
+    "goods": "430",
+    "gsr": "1.74089068825911",
+    "service": "247"
+}, {
+    "geoname": "San Miguel County",
+    "geonum": "113",
+    "pop": "3653",
+    "emp": "2156",
+    "epr": "0.590199835751437",
+    "goods": "410",
+    "gsr": "0.287517531556802",
+    "service": "1426"
+}, {
+    "geoname": "Sedgwick County",
+    "geonum": "115",
+    "pop": "2690",
+    "emp": "798",
+    "epr": "0.296654275092937",
+    "goods": "47",
+    "gsr": "0.104444444444444",
+    "service": "450"
+}, {
+    "geoname": "Summit County",
+    "geonum": "117",
+    "pop": "12881",
+    "emp": "11423",
+    "epr": "0.886810030277152",
+    "goods": "557",
+    "gsr": "0.0564222042139384",
+    "service": "9872"
+}, {
+    "geoname": "Teller County",
+    "geonum": "119",
+    "pop": "12468",
+    "emp": "2039",
+    "epr": "0.163538658966955",
+    "goods": "161",
+    "gsr": "0.127980922098569",
+    "service": "1258"
+}, {
+    "geoname": "Washington County",
+    "geonum": "121",
+    "pop": "4812",
+    "emp": "1075",
+    "epr": "0.223399833748961",
+    "goods": "113",
+    "gsr": "0.205454545454545",
+    "service": "550"
+}, {
+    "geoname": "Weld County",
+    "geonum": "123",
+    "pop": "131821",
+    "emp": "46370",
+    "epr": "0.351764893302281",
+    "goods": "11573",
+    "gsr": "0.439386461141273",
+    "service": "26339"
+}, {
+    "geoname": "Yuma County",
+    "geonum": "125",
+    "pop": "8954",
+    "emp": "2520",
+    "epr": "0.281438463256645",
+    "goods": "437",
+    "gsr": "0.327831957989497",
+    "service": "1333"
+}]
