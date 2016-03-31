@@ -109,7 +109,7 @@ input[type="range"]::-webkit-slider-thumb:hover{
     top: 5px;
     left: 10px;
     width: 250px;
-    height: 90px;
+    height: 110px;
     border-style: none;
     border-right: 1px solid grey;
   }  
@@ -119,7 +119,7 @@ input[type="range"]::-webkit-slider-thumb:hover{
     position: absolute;
     top: 5px;
     left: 280px;
-    width: 280px;
+    width: 500px;
   }
 
 
@@ -161,12 +161,12 @@ border:1px solid grey;
     </form></div>
   
   <div id="rangesliders">
-  <span>Population&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="pop" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value1'); changeval(this)"><span id="slider_value1" style="color:red;"></span><br />   
-  <span>Employment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="emp" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value2'); changeval(this)"><span id="slider_value2" style="color:red;"></span><br />  
-  <span>Employment Pop Ratio&nbsp;</span><input type="range" id="epr" value = 10 min="0" max="10" onchange="show_value(this.value,'slider_value3'); changeval(this)"><span id="slider_value3" style="color:red;"></span><br />
-  <span>Goods&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="goods" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value4'); changeval(this)"><span id="slider_value4" style="color:red;"></span><br /> 
-  <span>Goods to Service Ratio&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="gsr" value = 10 min="0" max="10" onchange="show_value(this.value,'slider_value5'); changeval(this)"><span id="slider_value5" style="color:red;"></span><br />      
-  <span>Service&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="service" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value6'); changeval(this)"><span id="slider_value6" style="color:red;"></span><br />  
+  <span>Population&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="pop" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value1'); changeval(this)"><span id="slider_value1" style="color:red;"></span><br />   
+  <span>Employment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="emp" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value2'); changeval(this)"><span id="slider_value2" style="color:red;"></span><br />  
+  <span>Employment Pop Ratio&nbsp;&nbsp;&nbsp;</span><input type="range" id="epr" value = 10 min="0" max="10" onchange="show_value(this.value,'slider_value3'); changeval(this)"><span id="slider_value3" style="color:red;"></span><br />
+  <span>Goods&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="goods" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value4'); changeval(this)"><span id="slider_value4" style="color:red;"></span><br /> 
+  <span>Goods to Service Ratio&nbsp;</span><input type="range" id="gsr" value = 10 min="0" max="10" onchange="show_value(this.value,'slider_value5'); changeval(this)"><span id="slider_value5" style="color:red;"></span><br />      
+  <span>Service&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" id="service" value = 0 min="0" max="10" onchange="show_value(this.value,'slider_value6'); changeval(this)"><span id="slider_value6" style="color:red;"></span><br />  
      </div>  
   
 
@@ -182,7 +182,7 @@ border:1px solid grey;
 
   
   var linksdata; //global all links
-  var pop=5, emp=3, epr=2, goods=1, gsr=2, service=1; 
+  var pop=0, emp=0, epr=10, goods=0, gsr=10, service=0; 
   
   function show_value(x,id){
  document.getElementById(id).innerHTML=x;
@@ -274,13 +274,17 @@ var width = 1200,
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(-300)
-	  .gravity(0.1)
-	  .linkDistance(function(d) { return  1+((d.pop*pop)+(d.emp*emp)+(d.epr*epr)+(d.goods*goods)+(d.gsr*gsr)+(d.service*service))*(61/(1+pop+emp+epr+goods+gsr+service)); }) 
-	  .linkStrength(1) 
+    .linkStrength(0.5)
     .friction(0.9)
+	  .linkDistance(function(d) { return  1+((d.pop*pop)+(d.emp*emp)+(d.epr*epr)+(d.goods*goods)+(d.gsr*gsr)+(d.service*service))*(61/(1+pop+emp+epr+goods+gsr+service)); }) 
+    .charge(-30)
+    .gravity(0)
+    .theta(0)
+    .alpha(1)
     .size([width, height]);
 	
+
+
 
   
 var svg = d3.select("body").append("svg")
